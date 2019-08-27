@@ -1,7 +1,9 @@
 package Singleton
 
-import ("sync"
-		"fmt")
+import (
+	"sync"
+	"fmt"
+)
 
 type singleton struct {}
 
