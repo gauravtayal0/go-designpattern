@@ -1,7 +1,9 @@
 package main
 
-import ("github.com/gauravtayal0/Go-DesignPattern/Singleton"
-		"fmt")
+import (
+	"github.com/gauravtayal0/Go-DesignPattern/Singleton"
+	"fmt"
+)
 
 func main(){
 	instance := Singleton.Getinstance()
