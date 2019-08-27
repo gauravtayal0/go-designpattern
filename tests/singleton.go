@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/gauravtayal0/Go-DesignPattern/Singleton"
 	"fmt"
+	"github.com/gauravtayal0/Go-DesignPattern/Singleton"
 )
 
 func main(){
