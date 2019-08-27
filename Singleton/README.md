@@ -15,6 +15,7 @@ There are various ways to implement the singleton pattern in Go, but it is also 
 
 singleton package with Once.Do() 
 
+```golang
 package singleton
 
 import (
@@ -32,3 +33,4 @@ func GetInstance() *singleton {
     })
     return instance
 }
+```
