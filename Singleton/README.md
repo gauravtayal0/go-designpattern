@@ -1,5 +1,3 @@
-### Singleton is one of the most common and simplest design patterns in terms of its class diagram. Infact diagram just holds a single class.
-
 # Wikipedia defines Singleton Pattern as:
 
 In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one *single instance*. This is useful when exactly one object is needed to coordinate actions across the system. 
