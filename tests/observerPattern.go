@@ -15,6 +15,4 @@ func main() {
 	}
 
 	weatherSubject.SetState(123)
-
-	//weatherSubject.Notify()
 }
