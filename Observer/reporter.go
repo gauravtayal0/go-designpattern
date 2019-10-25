@@ -9,7 +9,7 @@ type reporter struct {
 }
 
 func (r *reporter) Update(message int64) {
-	fmt.Printf("%d subject state received for observer id %d \n", message, r.Id)
+	fmt.Printf("%d temperature received from weather station for observer id %d \n", message, r.Id)
 }
 
 func NewReporter(id int) Observer {

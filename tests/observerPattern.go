@@ -6,11 +6,17 @@ import (
 
 func main() {
 	weatherSubject := Observer.NewSubject()
+	var weatherObserver Observer.Observer
 
 	for i := 0; i < 10; i++ {
-		reporter1 := Observer.NewReporter(i)
-		weatherSubject.Subscribe(reporter1)
+		weatherObserver = Observer.NewReporter(i)
+		weatherSubject.RegisterObserver(weatherObserver)
 	}
 
-	weatherSubject.SetState(123)
+	weatherSubject.SetMeasurement(123)
+
+	//lets remove the last observer
+	weatherSubject.RemoveObserver(weatherObserver)
+	weatherSubject.SetMeasurement(456)
+
 }

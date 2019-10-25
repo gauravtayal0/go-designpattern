@@ -1,36 +1,45 @@
 package Observer
 
 type weather struct {
-	state     int64
-	observers []Observer
+	temperature int64
+	observers   map[Observer]int64 //[]Observer
 }
 
-func (w *weather) GetState() int64 {
-	return w.state
+func (this *weather) GetTemperature() int64 {
+	return this.temperature
 }
 
-func (w *weather) SetState(temperatue int64) {
-	w.state = temperatue
-	w.Notify()
+func (this *weather) SetMeasurement(temperatue int64) {
+	this.temperature = temperatue
+	this.dataChanges()
 }
 
-func (w *weather) Subscribe(o Observer) {
-	w.observers = append(w.observers, o)
+func (this *weather) dataChanges() {
+	this.NotifyObservers()
 }
 
-func (w *weather) Notify() {
-	for _, o := range w.observers {
-		if o != nil {
-			o.Update(w.GetState())
+func (this *weather) RegisterObserver(o Observer) {
+	this.observers[o] = 1
+}
+
+func (this *weather) RemoveObserver(o Observer) {
+	_, check := this.observers[o]
+	if check {
+		delete(this.observers, o)
+	}
+}
+
+func (this *weather) NotifyObservers() {
+	for observer := range this.observers {
+		if observer != nil {
+			observer.Update(this.GetTemperature())
 		}
 	}
 }
 
-func NewSubject() Subject {
+func NewSubject() *weather {
 	subject := new(weather)
 
-	subject.observers = make([]Observer, 0)
-	subject.state = 0
-
+	subject.observers = make(map[Observer]int64) //make([]Observer, 0)
 	return subject
 }

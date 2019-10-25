@@ -2,10 +2,9 @@ package Observer
 
 type (
 	Subject interface {
-		Subscribe(Observer)
-		GetState() int64
-		SetState(int64)
-		Notify()
+		RegisterObserver(Observer)
+		RemoveObserver(Observer)
+		NotifyObservers()
 	}
 
 	Observer interface {
