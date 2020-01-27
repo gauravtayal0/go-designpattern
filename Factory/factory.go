@@ -1,11 +1,18 @@
 package Factory
 
+type DatabaseType int
+
+const (
+	Mongo DatabaseType = iota
+	Sql
+)
+
 type (
 	mongoDB struct {
 		database map[string]string
 	}
 
-	sql struct{
+	sql struct {
 		database map[string]string
 	}
 )
@@ -18,7 +25,7 @@ func (mdb mongoDB) GetData(query string) string {
 }
 
 func (mdb mongoDB) PutData(query, data string) {
-	mdb.database[query] = data
+	mdb.database[query] = data + " mongoDb"
 }
 
 func (sql sql) GetData(query string) string {
@@ -29,21 +36,21 @@ func (sql sql) GetData(query string) string {
 }
 
 func (sql sql) PutData(query, data string) {
-	sql.database[query] = data
+	sql.database[query] = data + " sql"
 }
 
-func DatabaseFactory(env string) Database{
-	switch env {
-	case "production":
+func DatabaseFactory(database DatabaseType) Database {
+	switch database {
+	case Mongo:
 		return mongoDB{
 			database: make(map[string]string, 0),
 		}
-	case "development":
+	case Sql:
 		return sql{
 			database: make(map[string]string, 0),
 		}
 	default:
 		return nil
-		
+
 	}
 }

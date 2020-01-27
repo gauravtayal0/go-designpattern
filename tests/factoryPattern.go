@@ -5,9 +5,9 @@ import (
 	"github.com/gauravtayal0/Go-DesignPattern/Factory"
 )
 
-func main(){
-	database := Factory.DatabaseFactory("production")
-	
-	database.PutData("test", "this is mongodb")
+func main() {
+	database := Factory.DatabaseFactory(Factory.Sql)
+
+	database.PutData("test", "database selected is")
 	fmt.Println(database.GetData("test"))
 }
